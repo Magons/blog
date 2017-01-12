@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -26,6 +28,10 @@ gem 'puma', '~> 3.0'
 # gem 'rack-cors'
 
 group :development, :test do
+  # Use RSpec for specs
+  gem 'rspec-rails'
+  # Use Factory Girl for generating random test data
+  gem 'factory_girl_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
