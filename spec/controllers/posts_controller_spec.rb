@@ -55,6 +55,14 @@ RSpec.describe PostsController, type: :controller do
         %w(average_rating content created_at id ip_address title updated_at user_id).sort
       )
     end
+
+    it 'should merge ip addres to params' do
+      expect_params = params = ActionController::Parameters.new({
+        title: 'Test', content: 'test', ip_address: '0.0.0.0'
+      })
+      post :create, params: { post: { title: 'Test', content: 'test' }, author: { login: 'Sam' } }
+      expect(controller.params[:post]).to eq expect_params
+    end
   end
 
   describe 'PUT vote' do

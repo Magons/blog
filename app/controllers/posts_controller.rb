@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: :vote
+  before_action :add_ip_address_to_params, only: :create
 
   def index
     @posts = Post.order(average_rating: :desc).first(params[:quantity])
@@ -24,5 +25,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def add_ip_address_to_params
+    params[:post][:ip_address] = request.remote_ip
   end
 end

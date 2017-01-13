@@ -14,7 +14,7 @@ class PostService
   end
 
   def permit_post_params
-    @params.require(:post).permit(:title, :content)
+    @params.require(:post).permit(:title, :content, :ip_address)
   end
 
   def permit_user_params
