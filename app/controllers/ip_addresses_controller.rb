@@ -1,6 +1,6 @@
 class IpAddressesController < ApplicationController
   def index
-    @ip_addresses = IpAddressService.new.find_duplicated
-    render json: @ip_addresses.as_json
+    @ip_addresses = IpAddress.where('array_length(users, 1) > 1')
+    render json: @ip_addresses
   end
 end
