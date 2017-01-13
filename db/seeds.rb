@@ -7,7 +7,7 @@ puts 'Creating posts. Please wait...'
     post: {
       title: "Test #{i}",
       content: "Test content #{i}",
-      ip_address: "34.18.142.#{i/1000}"
+      ip_address: "34.18.142.#{i/4000}"
     },
     author: {
       login: @names[i/2000]

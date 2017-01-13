@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'ip_addresses/index'
+  get 'ip_addresses', to: 'ip_addresses#index'
 
   resources :posts, only: [:index, :create] do
     put 'vote', on: :member
