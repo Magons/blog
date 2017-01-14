@@ -19,7 +19,9 @@ class VoteService
   end
 
   def update_average_rating
-    @post.update(average_rating: calcualte_average_rating)
+    @post.with_lock do
+      @post.update(average_rating: calcualte_average_rating)
+    end
     calcualte_average_rating.round(2)
   end
 

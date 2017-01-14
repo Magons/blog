@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def vote
-    VoteJob.perform_now(@post, params[:vote_value])
+    VoteService.new(@post, params[:vote_value]).vote
     render json: { average_rating: @post.average_rating }
   end
 
