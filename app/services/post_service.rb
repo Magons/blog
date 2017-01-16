@@ -16,7 +16,9 @@ class PostService
 
   def find_or_create_ip_address
     ip_address
-    update_ip_address unless ip_address.users.include? user.login
+    ip_address.with_lock do
+      update_ip_address unless ip_address.users.include? user.login
+    end
   end
 
   def update_ip_address
